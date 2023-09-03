@@ -12,7 +12,7 @@ const brickGap = 5;
 
 // Paddle properties
 let paddleX = (canvas.width - paddleWidth) / 2;
-const paddleSpeed = 8;
+const paddleSpeed = 10;
 
 // Ball properties
 let ballX = canvas.width / 2;
@@ -94,6 +94,34 @@ function movePaddle(e) {
         paddleX += paddleSpeed;
     }
 }
+
+function drawTitleScreen() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = "36px Arial";
+    ctx.fillStyle = "#fff";
+    ctx.textAlign = "center";
+    ctx.fillText("Brick Breaker Game", canvas.width / 2, canvas.height / 2 - 50);
+
+    ctx.font = "24px Arial";
+    ctx.fillText("Press 'Start Game' to begin", canvas.width / 2, canvas.height / 2 + 50);
+}
+
+// Handle "Start Game" Button Click
+const startButton = document.getElementById("startButton");
+
+startButton.addEventListener("click", () => {
+    if (gameState === "title") {
+        gameState = "game";
+        startButton.style.display = "none";
+    }
+});
+
+// Hide the button initially until the game is started
+startButton.style.display = "block";
+
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
