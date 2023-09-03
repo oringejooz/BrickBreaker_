@@ -7,13 +7,13 @@
     <title>Brick Breaker Game</title>
 </head>
 <body>
-    <div class="game-container">
-        <div class="paddle"></div>
-        <div class="ball"></div>
-        <!-- Add your bricks here -->
+    <div class="title-container" id="titleScreen">
+        <h1 class="title">Brick Breaker Game</h1>
+        <button class="start-button" id="startButton">Start Game</button>
+    </div>
+    <div class="game-container" id="gameContainer">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-<!-- |_Swarnima_|So the issue with this version is that the window and some objects like the ball and 
-    paddle have been created but it isn't dynamic and the bricks did not spawn because I didn't add the bricks-->
