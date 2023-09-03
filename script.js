@@ -103,8 +103,8 @@ function draw() {
     collisionDetection();
 
     // Ball movement
-    ballX += ballSpeedX;
-    ballY += ballSpeedY;
+    ballX += ballSpeedX *0.5;
+    ballY += ballSpeedY *0.5;
 
     // Ball collisions
     if (ballX + ballRadius > canvas.width || ballX - ballRadius < 0) {
