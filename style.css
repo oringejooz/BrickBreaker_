@@ -11,6 +11,8 @@ body {
 .game-container {
     position: relative;
     width: 400px;
+        /* Set the height of the body to 100% of the viewport height */
+
     height: 400px;
     background-color: #222;
 }
