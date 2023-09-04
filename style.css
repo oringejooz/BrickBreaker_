@@ -12,8 +12,8 @@ body {
      /* Background color for the entire page */
     background-color: #f0f0f0;
 }
-/* Style for the game container */
 
+/* Style for the game container */
 .game-container {
     position: relative;
     width: 400px;
@@ -21,6 +21,7 @@ body {
     background-color: #222;
 }
 
+/* Style for the paddle */
 .paddle {
     position: absolute;
     bottom: 10px;
@@ -29,6 +30,7 @@ body {
     background-color: #3498db;
 }
 
+/* Style for the ball */
 .ball {
     position: absolute;
     width: 20px;
