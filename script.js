@@ -1,5 +1,8 @@
+ // Get a reference to the HTML canvas element and create a 2D rendering context
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+
+// Define constants for the paddle, ball, and bricks
 const paddleWidth = 100;
 const paddleHeight = 10;
 const ballRadius = 10;
@@ -9,16 +12,20 @@ const brickRowCount = 5;
 const brickColumnCount = 10;
 const brickGap = 5;
 
+// Initialize the paddle's position and speed
 let paddleX = (canvas.width - paddleWidth) / 2;
 const paddleSpeed = 8;
 
+// Initialize the ball's position and speed
 let ballX = canvas.width / 2;
 let ballY = canvas.height - paddleHeight - ballRadius;
 let ballSpeedX = 5;
 let ballSpeedY = -5;
 
+// Create an empty array to store information about the bricks
 const bricks = [];
 
+// Initialize the bricks array with their positions and status
 for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (let r = 0; r < brickRowCount; r++) {
@@ -26,18 +33,23 @@ for (let c = 0; c < brickColumnCount; c++) {
     }
 }
 
+// Listen for keyboard input to move the paddle
 document.addEventListener("keydown", movePaddle);
 
+// Initialize the game score
 let score = 0;
 
+// Get the last score from local storage or set it to 0
 let lastScore = localStorage.getItem("lastScore") || 0;
 
+// Function to update the score and display it
 function updateScore() {
     score += 10;
     document.getElementById("score").textContent = "Score: " + score;
     localStorage.setItem("lastScore", score);
 }
 
+// Function to draw the paddle on the canvas
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -46,6 +58,7 @@ function drawPaddle() {
     ctx.closePath();
 }
 
+// Function to draw the ball on the canvas
 function drawBall() {
     ctx.beginPath();
     const gradient = ctx.createRadialGradient(ballX, ballY, 0, ballX, ballY, ballRadius);
@@ -59,6 +72,7 @@ function drawBall() {
     ctx.closePath();
 }
 
+// Function to draw the bricks on the canvas
 function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -77,6 +91,7 @@ function drawBricks() {
     }
 }
 
+// Function to detect collisions between the ball and bricks
 function collisionDetection() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -97,6 +112,7 @@ function collisionDetection() {
     }
 }
 
+// Function to move the paddle based on keyboard input
 function movePaddle(e) {
     if (e.key === "ArrowLeft" && paddleX > 0) {
         paddleX -= paddleSpeed;
@@ -105,6 +121,7 @@ function movePaddle(e) {
     }
 }
 
+// Function to draw the game elements and handle game logic
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
@@ -132,21 +149,21 @@ function draw() {
         }
     }
 
+    // Request the next frame to continue the game loop
     requestAnimationFrame(draw);
 }
 
+// Function to initialize the game
 function initGame() {
     draw();
 }
 
+// Event listener for starting the game
 document.getElementById("startButton").addEventListener("click", () => {
     document.getElementById("titleScreen").style.display = "none";
     document.getElementById("gameContainer").style.display = "block";
     initGame();
 });
 
-    requestAnimationFrame(draw);
-}
-
-// Start the game loop
+// Start the game loop by calling the draw function initially
 draw();
