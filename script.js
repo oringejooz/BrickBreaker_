@@ -34,6 +34,7 @@ for (let c = 0; c < brickColumnCount; c++) {
 document.addEventListener("keydown", movePaddle);
 
 // Functions
+// Function to draw the paddle on the canvas
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -41,7 +42,7 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
 }
-
+// Function to draw the ball on the canvas
 function drawBall() {
     ctx.beginPath();
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
