@@ -128,7 +128,9 @@ function draw() {
         if (ballX > paddleX && ballX < paddleX + paddleWidth) {
             ballSpeedY = -ballSpeedY;
         } else {
-            document.location.reload();
+            // Show "You Lose" screen
+            document.getElementById("loseScreen").style.display = "block";
+            document.getElementById("finalScore").textContent = score;
         }
     }
 
@@ -139,14 +141,24 @@ function initGame() {
     draw();
 }
 
+function restartGame() {
+    // Hide "You Lose" screen and reset game variables
+    document.getElementById("loseScreen").style.display = "none";
+    paddleX = (canvas.width - paddleWidth) / 2;
+    ballX = canvas.width / 2;
+    ballY = canvas.height - paddleHeight - ballRadius;
+    ballSpeedX = 5;
+    ballSpeedY = -5;
+    score = 0;
+    updateScore();
+    initGame();
+}
+
 document.getElementById("startButton").addEventListener("click", () => {
     document.getElementById("titleScreen").style.display = "none";
     document.getElementById("gameContainer").style.display = "block";
     initGame();
 });
 
-    requestAnimationFrame(draw);
-}
+document.getElementById("restartButton").addEventListener("click", restartGame);
 
-// Start the game loop
-draw();
