@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="style.css">
     <title>Brick Breaker Game</title>
 </head>
@@ -12,9 +11,19 @@
         <h1 class="title">Brick Breaker Game</h1>
         <button class="start-button" id="startButton">Start Game</button>
     </div>
-    <div class="game-container" id="gameContainer">
+    <div class="game-container" id="gameContainer" style="display: none;">
         <canvas id="gameCanvas" width="400" height="400"></canvas>
     </div>
     <script src="script.js"></script>
+    <script>
+        const titleScreen = document.getElementById("titleScreen");
+        const gameContainer = document.getElementById("gameContainer");
+        const startButton = document.getElementById("startButton");
+
+        startButton.addEventListener("click", () => {
+            titleScreen.style.display = "none";
+            gameContainer.style.display = "block";
+        });
+    </script>
 </body>
 </html>
