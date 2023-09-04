@@ -15,13 +15,13 @@ It only uses HTML,CSS and JavaScript
 
 ## Screenshots
 
-![image](https://github.com/oringejooz/BrickBreaker_/assets/124855325/9f0a902c-8252-4455-ac98-481266166975)
 
 
-![image](https://github.com/oringejooz/BrickBreaker_/assets/124855325/b2cb3292-d035-410c-af95-361d2fd0ae97)
 
 
-![image](https://github.com/oringejooz/BrickBreaker_/assets/124855325/1861c910-0d13-4f7f-99b1-cf30089cf443)
+
+
+
 
 
 
