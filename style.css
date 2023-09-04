@@ -1,15 +1,13 @@
 /* Reset default margin and padding for the body */
-
 body {
     margin: 0;
     padding: 0;
-        /* Center the content both horizontally and vertically */
-
+    /* Center the content both horizontally and vertically */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-     /* Background color for the entire page */
+    /* Background color for the entire page */
     background-color: #f0f0f0;
 }
 
@@ -19,6 +17,11 @@ body {
     width: 400px;
     height: 400px;
     background-color: #222;
+    border: 2px solid #3498db;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Add a subtle background pattern */
+    background-image: linear-gradient(45deg, #444 25%, transparent 25%, transparent 50%, #444 50%, #444 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
 }
 
 /* Style for the paddle */
@@ -28,6 +31,7 @@ body {
     width: 100px;
     height: 10px;
     background-color: #3498db;
+    border-radius: 5px; /* Rounded corners */
 }
 
 /* Style for the ball */
@@ -37,4 +41,6 @@ body {
     height: 20px;
     background-color: #e74c3c;
     border-radius: 50%;
+    /* Add a subtle shadow to the ball */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
