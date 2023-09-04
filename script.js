@@ -1,5 +1,8 @@
+// Get a reference to the HTML canvas element and create a 2D rendering context
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+
+// Define constants for paddle, ball, and brick properties
 const paddleWidth = 100;
 const paddleHeight = 10;
 const ballRadius = 10;
@@ -9,16 +12,20 @@ const brickRowCount = 5;
 const brickColumnCount = 10;
 const brickGap = 5;
 
+// Initialize paddle position and speed
 let paddleX = (canvas.width - paddleWidth) / 2;
 const paddleSpeed = 8;
 
+// Initialize ball position and speed
 let ballX = canvas.width / 2;
 let ballY = canvas.height - paddleHeight - ballRadius;
 let ballSpeedX = 5;
 let ballSpeedY = -5;
 
+// Initialize an array to store brick information
 const bricks = [];
 
+// Populate the bricks array with initial values
 for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (let r = 0; r < brickRowCount; r++) {
@@ -26,18 +33,21 @@ for (let c = 0; c < brickColumnCount; c++) {
     }
 }
 
+// Event listener to handle paddle movement
 document.addEventListener("keydown", movePaddle);
 
+// Initialize the player's score and retrieve the last saved score from local storage
 let score = 0;
-
 let lastScore = localStorage.getItem("lastScore") || 0;
 
+// Function to update the player's score and save it to local storage
 function updateScore() {
     score += 10;
     document.getElementById("score").textContent = "Score: " + score;
     localStorage.setItem("lastScore", score);
 }
 
+// Function to draw the paddle on the canvas
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -46,6 +56,7 @@ function drawPaddle() {
     ctx.closePath();
 }
 
+// Function to draw the ball on the canvas
 function drawBall() {
     ctx.beginPath();
     const gradient = ctx.createRadialGradient(ballX, ballY, 0, ballX, ballY, ballRadius);
@@ -59,6 +70,7 @@ function drawBall() {
     ctx.closePath();
 }
 
+// Function to draw the bricks on the canvas
 function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -77,6 +89,7 @@ function drawBricks() {
     }
 }
 
+// Function to detect collisions between the ball and bricks
 function collisionDetection() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -97,6 +110,7 @@ function collisionDetection() {
     }
 }
 
+// Function to move the paddle based on user input
 function movePaddle(e) {
     if (e.key === "ArrowLeft" && paddleX > 0) {
         paddleX -= paddleSpeed;
@@ -105,6 +119,7 @@ function movePaddle(e) {
     }
 }
 
+// Function to draw the game elements and handle game logic
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
@@ -116,8 +131,8 @@ function draw() {
     ctx.fillStyle = "#000";
     ctx.fillText("Score: " + score, 10, 20);
 
-    ballX += ballSpeedX * 0.5;
-    ballY += ballSpeedY * 0.5;
+    ballX += ballSpeedX * 0.25;
+    ballY += ballSpeedY * 0.25;
 
     if (ballX + ballRadius > canvas.width || ballX - ballRadius < 0) {
         ballSpeedX = -ballSpeedX;
@@ -137,10 +152,12 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
+// Function to initialize the game
 function initGame() {
     draw();
 }
 
+// Function to restart the game
 function restartGame() {
     // Hide "You Lose" screen and reset game variables
     document.getElementById("loseScreen").style.display = "none";
@@ -154,10 +171,15 @@ function restartGame() {
     initGame();
 }
 
+// Event listener to start the game when the "Start Game" button is clicked
 document.getElementById("startButton").addEventListener("click", () => {
     document.getElementById("titleScreen").style.display = "none";
     document.getElementById("gameContainer").style.display = "block";
     initGame();
+});
+
+// Event listener to restart the game when the "Restart" button on the "You Lose" screen is clicked
+document.getElementById("restartButton").addEventListener("click", restartGame);
 });
 
 document.getElementById("restartButton").addEventListener("click", restartGame);
