@@ -6,57 +6,94 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Add custom styles for improved aesthetics */
-     * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            color: black;
-        }
-     
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Press Start 2P', sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+     
+        /* Add retro-style font */
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+        .game-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #000;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            background-image: linear-gradient(45deg, #444 25%, transparent 25%, transparent 50%, #444 50%, #444 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
         }
 
+        /* Style for the paddle */
+        .paddle {
+            position: absolute;
+            bottom: 10px;
+            width: 100px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        /* Style for the ball */
+        .ball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Style for the bricks */
+        .brick {
+            position: absolute;
+            width: 70px;
+            height: 20px;
+            background-color: #ff6600;
+            border-radius: 5px;
+        }
+
+        /* Retro-style title */
         .title-container {
             text-align: center;
-            margin-top: 20vh;
+            margin-bottom: 20px;
         }
 
         .title {
             font-size: 2rem;
-            color: #3498db;
+            color: #ff6600;
+            text-transform: uppercase;
         }
 
+        /* Retro-style start button */
         .start-button {
             margin-top: 1.5rem;
             padding: 10px 20px;
             font-size: 1rem;
-            background-color: #3498db;
+            background-color: #ff6600;
             color: #fff;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
-           border-radius: 50px;
+            border-radius: 50px;
         }
 
         .start-button:hover {
-            background-color: #2980b9;
+            background-color: #cc5500;
         }
 
-        .game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-        }
-
-        canvas {
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        /* Score display */
+        .score {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
         }
     </style>
     <title>Brick Breaker Game</title>
@@ -69,16 +106,8 @@
     <div class="game-container" id="gameContainer" style="display: none;">
         <canvas id="gameCanvas" width="400" height="400"></canvas>
     </div>
+    <div class="score" id="score">Score: 0</div>
     <script src="script.js"></script>
-    <script>
-        const titleScreen = document.getElementById("titleScreen");
-        const gameContainer = document.getElementById("gameContainer");
-        const startButton = document.getElementById("startButton");
-
-        startButton.addEventListener("click", () => {
-            titleScreen.style.display = "none";
-            gameContainer.style.display = "block";
-        });
-    </script>
 </body>
 </html>
+     

@@ -1,4 +1,3 @@
-// Constants
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const paddleWidth = 100;
@@ -10,17 +9,14 @@ const brickRowCount = 5;
 const brickColumnCount = 10;
 const brickGap = 5;
 
-// Paddle properties
 let paddleX = (canvas.width - paddleWidth) / 2;
 const paddleSpeed = 8;
 
-// Ball properties:initialization of ball properties
 let ballX = canvas.width / 2;
 let ballY = canvas.height - paddleHeight - ballRadius;
 let ballSpeedX = 5;
 let ballSpeedY = -5;
 
-// Brick properties
 const bricks = [];
 
 for (let c = 0; c < brickColumnCount; c++) {
@@ -30,14 +26,18 @@ for (let c = 0; c < brickColumnCount; c++) {
     }
 }
 
-// Event listeners
 document.addEventListener("keydown", movePaddle);
 
-// Score variable
 let score = 0;
 
-// Functions
-// Function to draw the paddle on the canvas
+let lastScore = localStorage.getItem("lastScore") || 0;
+
+function updateScore() {
+    score += 10;
+    document.getElementById("score").textContent = "Score: " + score;
+    localStorage.setItem("lastScore", score);
+}
+
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -45,20 +45,20 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
 }
-// Function to draw the ball on the canvas
+
 function drawBall() {
     ctx.beginPath();
     const gradient = ctx.createRadialGradient(ballX, ballY, 0, ballX, ballY, ballRadius);
-    gradient.addColorStop(0, "#e74c3c"); // Inner color
-    gradient.addColorStop(1, "#c0392b"); // Outer color
+    gradient.addColorStop(0, "#e74c3c");
+    gradient.addColorStop(1, "#c0392b");
     ctx.fillStyle = gradient;
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-    ctx.shadowColor = "#c0392b"; // Ball shadow color
-    ctx.shadowBlur = 10; // Shadow blur radius
+    ctx.shadowColor = "#c0392b";
+    ctx.shadowBlur = 10;
     ctx.fill();
     ctx.closePath();
 }
-// Function to draw the bricks on the canvas
+
 function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -76,7 +76,7 @@ function drawBricks() {
         }
     }
 }
-// Function to handle collision detection between the ball and bricks
+
 function collisionDetection() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -90,15 +90,13 @@ function collisionDetection() {
                 ) {
                     ballSpeedY = -ballSpeedY;
                     brick.status = 0;
-
-                    // Increment the score
-                    score += 10;
+                    updateScore();
                 }
             }
         }
     }
 }
-// Function to move the paddle based on user input
+
 function movePaddle(e) {
     if (e.key === "ArrowLeft" && paddleX > 0) {
         paddleX -= paddleSpeed;
@@ -114,16 +112,13 @@ function draw() {
     drawBall();
     collisionDetection();
 
-    // Display the score
     ctx.font = "20px Arial";
     ctx.fillStyle = "#000";
     ctx.fillText("Score: " + score, 10, 20);
 
-    // Ball movement
-    ballX += ballSpeedX *0.5;
-    ballY += ballSpeedY *0.5;
+    ballX += ballSpeedX * 0.5;
+    ballY += ballSpeedY * 0.5;
 
-    // Ball collisions
     if (ballX + ballRadius > canvas.width || ballX - ballRadius < 0) {
         ballSpeedX = -ballSpeedX;
     }
@@ -133,10 +128,22 @@ function draw() {
         if (ballX > paddleX && ballX < paddleX + paddleWidth) {
             ballSpeedY = -ballSpeedY;
         } else {
-            // Game over
             document.location.reload();
         }
     }
+
+    requestAnimationFrame(draw);
+}
+
+function initGame() {
+    draw();
+}
+
+document.getElementById("startButton").addEventListener("click", () => {
+    document.getElementById("titleScreen").style.display = "none";
+    document.getElementById("gameContainer").style.display = "block";
+    initGame();
+});
 
     requestAnimationFrame(draw);
 }
