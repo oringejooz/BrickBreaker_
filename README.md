@@ -36,7 +36,7 @@ These instructions will help you get a copy of the project up and running on you
 - [AtrayeePathak](https://github.com/AtrayeePathak)
 - [Pratiksha-25](https://github.com/Pratiksha-25)
 
-##FeedBacks
-***Please do add your valuable feedbacks after checking out our basic BrickBreaker game***
+## FeedBacks
+***Please do add your valuable feedbacks after checking out our basic BrickBreaker game in comments***
 
 
