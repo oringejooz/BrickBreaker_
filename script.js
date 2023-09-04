@@ -34,6 +34,7 @@ for (let c = 0; c < brickColumnCount; c++) {
 document.addEventListener("keydown", movePaddle);
 
 // Functions
+// Function to draw the paddle on the canvas
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -41,7 +42,7 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
 }
-
+// Function to draw the ball on the canvas
 function drawBall() {
     ctx.beginPath();
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
@@ -49,7 +50,7 @@ function drawBall() {
     ctx.fill();
     ctx.closePath();
 }
-
+// Function to draw the bricks on the canvas
 function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -67,7 +68,7 @@ function drawBricks() {
         }
     }
 }
-
+// Function to handle collision detection between the ball and bricks
 function collisionDetection() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -86,7 +87,7 @@ function collisionDetection() {
         }
     }
 }
-
+// Function to move the paddle based on user input
 function movePaddle(e) {
     if (e.key === "ArrowLeft" && paddleX > 0) {
         paddleX -= paddleSpeed;
