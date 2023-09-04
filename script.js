@@ -33,6 +33,9 @@ for (let c = 0; c < brickColumnCount; c++) {
 // Event listeners
 document.addEventListener("keydown", movePaddle);
 
+// Score variable
+let score = 0;
+
 // Functions
 // Function to draw the paddle on the canvas
 function drawPaddle() {
@@ -87,6 +90,9 @@ function collisionDetection() {
                 ) {
                     ballSpeedY = -ballSpeedY;
                     brick.status = 0;
+
+                    // Increment the score
+                    score += 10;
                 }
             }
         }
@@ -107,6 +113,11 @@ function draw() {
     drawPaddle();
     drawBall();
     collisionDetection();
+
+    // Display the score
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "#000";
+    ctx.fillText("Score: " + score, 10, 20);
 
     // Ball movement
     ballX += ballSpeedX *0.5;
