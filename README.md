@@ -31,10 +31,10 @@ These instructions will help you get a copy of the project up and running on you
 
 3. Open the repository in your IDE(Preferably VSCode) to play the game.(Use Live Server Extension)
 
-##Authors
--[oringejooz](https://github.com/oringejooz)
+## Authors
+- [oringejooz](https://github.com/oringejooz)
 - [AtrayeePathak](https://github.com/AtrayeePathak)
--[Pratiksha-25](https://github.com/Pratiksha-25)
+- [Pratiksha-25](https://github.com/Pratiksha-25)
 
 ##FeedBacks
 ***Please do add your valuable feedbacks after checking out our basic BrickBreaker game***
