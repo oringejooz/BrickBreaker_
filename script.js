@@ -44,8 +44,13 @@ function drawPaddle() {
 
 function drawBall() {
     ctx.beginPath();
+    const gradient = ctx.createRadialGradient(ballX, ballY, 0, ballX, ballY, ballRadius);
+    gradient.addColorStop(0, "#e74c3c"); // Inner color
+    gradient.addColorStop(1, "#c0392b"); // Outer color
+    ctx.fillStyle = gradient;
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = "#e74c3c";
+    ctx.shadowColor = "#c0392b"; // Ball shadow color
+    ctx.shadowBlur = 10; // Shadow blur radius
     ctx.fill();
     ctx.closePath();
 }
