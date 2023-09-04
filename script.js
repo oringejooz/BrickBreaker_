@@ -1,8 +1,9 @@
- // Get a reference to the HTML canvas element and create a 2D rendering context
+
+// Get a reference to the HTML canvas element and create a 2D rendering context
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// Define constants for the paddle, ball, and bricks
+// Define constants for paddle, ball, and brick properties
 const paddleWidth = 100;
 const paddleHeight = 10;
 const ballRadius = 10;
@@ -12,20 +13,22 @@ const brickRowCount = 5;
 const brickColumnCount = 10;
 const brickGap = 5;
 
-// Initialize the paddle's position and speed
+
+// Initialize paddle position and speed
 let paddleX = (canvas.width - paddleWidth) / 2;
 const paddleSpeed = 8;
 
-// Initialize the ball's position and speed
+// Initialize ball position and speed
 let ballX = canvas.width / 2;
 let ballY = canvas.height - paddleHeight - ballRadius;
 let ballSpeedX = 5;
 let ballSpeedY = -5;
 
-// Create an empty array to store information about the bricks
+// Initialize an array to store brick information
 const bricks = [];
 
-// Initialize the bricks array with their positions and status
+// Populate the bricks array with initial values
+
 for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (let r = 0; r < brickRowCount; r++) {
@@ -33,16 +36,16 @@ for (let c = 0; c < brickColumnCount; c++) {
     }
 }
 
-// Listen for keyboard input to move the paddle
+
+// Event listener to handle paddle movement
 document.addEventListener("keydown", movePaddle);
 
-// Initialize the game score
+// Initialize the player's score and retrieve the last saved score from local storage
 let score = 0;
-
-// Get the last score from local storage or set it to 0
 let lastScore = localStorage.getItem("lastScore") || 0;
 
-// Function to update the score and display it
+// Function to update the player's score and save it to local storage
+
 function updateScore() {
     score += 10;
     document.getElementById("score").textContent = "Score: " + score;
@@ -111,8 +114,7 @@ function collisionDetection() {
         }
     }
 }
-
-// Function to move the paddle based on keyboard input
+// Function to move the paddle based on user input
 function movePaddle(e) {
     if (e.key === "ArrowLeft" && paddleX > 0) {
         paddleX -= paddleSpeed;
@@ -145,7 +147,9 @@ function draw() {
         if (ballX > paddleX && ballX < paddleX + paddleWidth) {
             ballSpeedY = -ballSpeedY;
         } else {
-            document.location.reload();
+            // Show "You Lose" screen
+            document.getElementById("loseScreen").style.display = "block";
+            document.getElementById("finalScore").textContent = score;
         }
     }
 
@@ -158,12 +162,24 @@ function initGame() {
     draw();
 }
 
-// Event listener for starting the game
-document.getElementById("startButton").addEventListener("click", () => {
-    document.getElementById("titleScreen").style.display = "none";
-    document.getElementById("gameContainer").style.display = "block";
+
+// Function to restart the game
+function restartGame() {
+    // Hide "You Lose" screen and reset game variables
+    document.getElementById("loseScreen").style.display = "none";
+    paddleX = (canvas.width - paddleWidth) / 2;
+    ballX = canvas.width / 2;
+    ballY = canvas.height - paddleHeight - ballRadius;
+    ballSpeedX = 5;
+    ballSpeedY = -5;
+    score = 0;
+    updateScore();
     initGame();
+}
+
+// Event listener to start the game when the "Start Game" button is clicked
+// Event listener to restart the game when the "Restart" button on the "You Lose" screen is clicked
+document.getElementById("restartButton").addEventListener("click", restartGame);
 });
 
-// Start the game loop by calling the draw function initially
-draw();
+document.getElementById("restartButton").addEventListener("click", restartGame);

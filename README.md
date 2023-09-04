@@ -19,6 +19,7 @@ It only uses HTML,CSS and JavaScript
 
 ![image](https://github.com/oringejooz/BrickBreaker_/assets/124855325/519b6bbe-756d-444e-952d-492401afba2d)
 
+!![image](https://github.com/oringejooz/BrickBreaker_/assets/124855325/ba3c491b-6462-4917-9fba-a44992d6106d)
 
 
 ## Usage

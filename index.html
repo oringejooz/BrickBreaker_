@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,9 +17,10 @@
             align-items: center;
             height: 100vh;
         }
-     
+
         /* Add retro-style font */
         @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
         .game-container {
             position: relative;
             width: 400px;
@@ -95,6 +96,26 @@
             font-size: 1.5rem;
             margin-top: 20px;
         }
+
+        /* You Lose screen */
+        .lose-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .lose-screen h1 {
+            font-size: 2rem;
+            color: #ff6600;
+            text-transform: uppercase;
+        }
+
+        .lose-screen p {
+            font-size: 1rem;
+            color: #fff;
+            margin-top: 10px;
+        }
     </style>
     <title>Brick Breaker Game</title>
 </head>
@@ -107,6 +128,11 @@
         <canvas id="gameCanvas" width="400" height="400"></canvas>
     </div>
     <div class="score" id="score">Score: 0</div>
+    <div class="lose-screen" id="loseScreen">
+        <h1 class="title">You Lose!</h1>
+        <p>Your final score: <span id="finalScore">0</span></p>
+        <button class="start-button" id="restartButton">Restart</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
