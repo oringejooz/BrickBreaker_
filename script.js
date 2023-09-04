@@ -1,3 +1,4 @@
+
 // Get a reference to the HTML canvas element and create a 2D rendering context
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -11,6 +12,7 @@ const brickHeight = 20;
 const brickRowCount = 5;
 const brickColumnCount = 10;
 const brickGap = 5;
+
 
 // Initialize paddle position and speed
 let paddleX = (canvas.width - paddleWidth) / 2;
@@ -26,12 +28,14 @@ let ballSpeedY = -5;
 const bricks = [];
 
 // Populate the bricks array with initial values
+
 for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (let r = 0; r < brickRowCount; r++) {
         bricks[c][r] = { x: 0, y: 0, status: 1 };
     }
 }
+
 
 // Event listener to handle paddle movement
 document.addEventListener("keydown", movePaddle);
@@ -41,6 +45,7 @@ let score = 0;
 let lastScore = localStorage.getItem("lastScore") || 0;
 
 // Function to update the player's score and save it to local storage
+
 function updateScore() {
     score += 10;
     document.getElementById("score").textContent = "Score: " + score;
@@ -109,7 +114,6 @@ function collisionDetection() {
         }
     }
 }
-
 // Function to move the paddle based on user input
 function movePaddle(e) {
     if (e.key === "ArrowLeft" && paddleX > 0) {
@@ -149,6 +153,7 @@ function draw() {
         }
     }
 
+    // Request the next frame to continue the game loop
     requestAnimationFrame(draw);
 }
 
@@ -156,6 +161,7 @@ function draw() {
 function initGame() {
     draw();
 }
+
 
 // Function to restart the game
 function restartGame() {
@@ -172,15 +178,8 @@ function restartGame() {
 }
 
 // Event listener to start the game when the "Start Game" button is clicked
-document.getElementById("startButton").addEventListener("click", () => {
-    document.getElementById("titleScreen").style.display = "none";
-    document.getElementById("gameContainer").style.display = "block";
-    initGame();
-});
-
 // Event listener to restart the game when the "Restart" button on the "You Lose" screen is clicked
 document.getElementById("restartButton").addEventListener("click", restartGame);
 });
 
 document.getElementById("restartButton").addEventListener("click", restartGame);
-
