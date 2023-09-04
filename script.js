@@ -132,8 +132,8 @@ function draw() {
     ctx.fillStyle = "#000";
     ctx.fillText("Score: " + score, 10, 20);
 
-    ballX += ballSpeedX * 0.25;
-    ballY += ballSpeedY * 0.25;
+    ballX += ballSpeedX * 0.5;
+    ballY += ballSpeedY * 0.5;
 
     if (ballX + ballRadius > canvas.width || ballX - ballRadius < 0) {
         ballSpeedX = -ballSpeedX;
