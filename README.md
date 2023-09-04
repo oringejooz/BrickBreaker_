@@ -15,7 +15,11 @@ It only uses HTML,CSS and JavaScript
 
 ## Screenshots
 
- Screenshots
+!![image](https://github.com/oringejooz/BrickBreaker_/assets/124855325/b386b315-8ac1-4ad9-adb8-b57010e2a422)
+
+![image](https://github.com/oringejooz/BrickBreaker_/assets/124855325/519b6bbe-756d-444e-952d-492401afba2d)
+
+
 
 ## Usage
 
@@ -25,7 +29,7 @@ These instructions will help you get a copy of the project up and running on you
    
 2. Open the project directory in your code editor.
 
-3. Open index.html in your web browser to play the game.(Use Live Server Extension)
+3. Open the repository in your IDE(Preferably VSCode) to play the game.(Use Live Server Extension)
 
 
 
