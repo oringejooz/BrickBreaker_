@@ -12,6 +12,7 @@ body {
      /* Background color for the entire page */
     background-color: #f0f0f0;
 }
+/* Style for the game container */
 
 .game-container {
     position: relative;
