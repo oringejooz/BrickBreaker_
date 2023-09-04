@@ -1,4 +1,3 @@
-
 // Get a reference to the HTML canvas element and create a 2D rendering context
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -12,7 +11,6 @@ const brickHeight = 20;
 const brickRowCount = 5;
 const brickColumnCount = 10;
 const brickGap = 5;
-
 
 // Initialize paddle position and speed
 let paddleX = (canvas.width - paddleWidth) / 2;
@@ -35,7 +33,6 @@ for (let c = 0; c < brickColumnCount; c++) {
         bricks[c][r] = { x: 0, y: 0, status: 1 };
     }
 }
-
 
 // Event listener to handle paddle movement
 document.addEventListener("keydown", movePaddle);
@@ -178,8 +175,10 @@ function restartGame() {
 }
 
 // Event listener to start the game when the "Start Game" button is clicked
-// Event listener to restart the game when the "Restart" button on the "You Lose" screen is clicked
-document.getElementById("restartButton").addEventListener("click", restartGame);
+document.getElementById("startButton").addEventListener("click", () => {
+    document.getElementById("titleScreen").style.display = "none";
+    document.getElementById("gameContainer").style.display = "block";
+    initGame();
 });
-
+// Event listener to restart the game when the "Restart" button on the "You Lose" screen is clicked
 document.getElementById("restartButton").addEventListener("click", restartGame);
