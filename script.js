@@ -14,7 +14,7 @@ const brickGap = 5;
 let paddleX = (canvas.width - paddleWidth) / 2;
 const paddleSpeed = 8;
 
-// Ball properties
+// Ball properties:initialization of ball properties
 let ballX = canvas.width / 2;
 let ballY = canvas.height - paddleHeight - ballRadius;
 let ballSpeedX = 5;
