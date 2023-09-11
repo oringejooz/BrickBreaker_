@@ -147,6 +147,8 @@ function draw() {
             // Show "You Lose" screen
             document.getElementById("loseScreen").style.display = "block";
             document.getElementById("finalScore").textContent = score;
+            // Stop the game loop by not requesting the next frame
+            return;
         }
     }
 
