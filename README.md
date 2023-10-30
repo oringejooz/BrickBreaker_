@@ -35,7 +35,7 @@ These instructions will help you get a copy of the project up and running on you
 3. Open the repository in your IDE(Preferably VSCode) to play the game.(Use Live Server Extension)
 
 ## Authors
-- [oringejooz](https://github.com/oringejooz)
+- [Swarnima Bisht](https://github.com/swarnima2411)
 - [AtrayeePathak](https://github.com/AtrayeePathak)
 - [Pratiksha-25](https://github.com/Pratiksha-25)
 
